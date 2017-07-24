@@ -23,6 +23,7 @@ public class AppWithPropertyInjectionConfig {
     return new MyBeanWithPropertiesImpl(propertyOne, propertyTwo);
   }
 
+  // The properties can be passed in via method parameters.
   @Bean
   public MyBean myOtherBeanWithProperties(
       @Value("${propertyOne}") final String propertyOne,
