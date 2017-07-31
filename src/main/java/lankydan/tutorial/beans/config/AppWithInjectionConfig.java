@@ -38,4 +38,9 @@ public class AppWithInjectionConfig {
   public MyBean myBeanWithAutowiredDependency() {
     return new MyBeanWithInjectionImpl(myOtherBean);
   }
+
+  @Bean
+  public MyBean myBeanWithMethodInjectedDependency() {
+    return new MyBeanWithInjectionImpl(myBeanWithAutowiredDependency());
+  }
 }

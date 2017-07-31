@@ -33,22 +33,25 @@ public class Application implements CommandLineRunner {
   @Resource(name = "myOtherBean")
   private MyBean myOtherBeanWithWrongName;
 
-  @Autowired private MyBeanWithoutInterface myBeanWithoutInterface;
+  @Autowired
+  private MyBeanWithoutInterface myBeanWithoutInterface;
 
-  @Autowired private MyBean myBeanWithInjection;
+  @Autowired
+  private MyBean myBeanWithMethodInjectedDependency;
 
-  @Autowired private MyBean myOtherBeanWithProperties;
+  @Autowired
+  private MyBean myBeanWithMethodInjectedProperties;
 
   public static void main(final String args[]) {
     SpringApplication.run(Application.class, args);
   }
 
   @Override
-  public void run(final String args[]) {
+  public void run(final String... s) {
     myBean.someMethod();
     myOtherBeanWithWrongName.someMethod();
     myBeanWithoutInterface.someMethod();
-    myBeanWithInjection.someMethod();
-    myOtherBeanWithProperties.someMethod();
+    myBeanWithMethodInjectedDependency.someMethod();
+    myBeanWithMethodInjectedProperties.someMethod();
   }
 }

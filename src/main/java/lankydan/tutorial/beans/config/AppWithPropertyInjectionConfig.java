@@ -1,6 +1,7 @@
 package lankydan.tutorial.beans.config;
 
 import lankydan.tutorial.beans.MyBean;
+import lankydan.tutorial.beans.MyBeanWithInjectionImpl;
 import lankydan.tutorial.beans.MyBeanWithPropertiesImpl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -29,5 +30,10 @@ public class AppWithPropertyInjectionConfig {
       @Value("${propertyOne}") final String propertyOne,
       @Value("${propertyTwo}") final String propertyTwo) {
     return new MyBeanWithPropertiesImpl(propertyOne, propertyTwo);
+  }
+
+  @Bean
+  public MyBean myBeanWithMethodInjectedProperties() {
+    return new MyBeanWithInjectionImpl(myOtherBeanWithProperties(null, null));
   }
 }
